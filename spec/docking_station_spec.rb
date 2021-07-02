@@ -11,15 +11,16 @@ describe DockingStation do
 
     it { is_expected.to respond_to(:dock).with(1).argument }
 
-    it { is_expected.to respond_to(:bike) }
+    it { is_expected.to respond_to(:bikes) }
 
     it "docks bike" do
-        expect(subject.dock(Bike.new)).to eq subject.bike
+        expect(subject.dock(Bike.new)).to eq subject.bikes
     end
 
-    it "returns docked bike" do
-        subject.dock(Bike.new)
-        expect(subject.bike).to be_instance_of(Bike)
+    it "Make sure array contains docked bike" do
+        b1 = Bike.new
+        subject.dock(b1)
+        expect(subject.bikes).to include(b1)
     end
 
     it "raises error when no bike" do

@@ -1,15 +1,18 @@
 require "bike"
 
 class DockingStation
-  attr_reader :bike
+  attr_accessor :bikes
+  def initialize
+    @bikes = []
+  end
 
-    def release_bike
-        @bike ? @bike : (fail "No bike")
-    end
+  def release_bike
+      @bikes.empty? ? (fail "No bike") : @bikes.pop
+  end
 
-    def dock(bike)
-      @bike ? (fail "Dock full"): @bike = bike
-    end
+  def dock(bike)
+    @bikes.length >= 20 ? (fail "Dock full") : (@bikes << bike)
+  end
 end
 
 
