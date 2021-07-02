@@ -1,7 +1,8 @@
-require_relative "bike"
+require "bike"
 
 class DockingStation
   attr_reader :bike
+
     def release_bike
         @bike ? @bike : (fail "No bike")
     end
